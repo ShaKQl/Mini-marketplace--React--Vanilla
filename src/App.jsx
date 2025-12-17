@@ -1,29 +1,30 @@
-import { useState, useEffect } from 'react';
-import Cart from './components/Cart';
+import { useEffect, useState } from 'react';
+import Cart from './components/Cart/Cart';
 
 function App() {
   const [items, setItems] = useState([]);
 
-  const loadCart = () => {
+  function loadCart() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     setItems(cart);
-  };
+  }
 
-  const removeItem = id => {
+  function removeItem(id) {
     const updated = items.filter(item => item.id !== id);
     localStorage.setItem('cart', JSON.stringify(updated));
     setItems(updated);
-  };
 
-  useEffect(loadCart, []);
+    window.dispatchEvent(new Event('cartUpdated'));
+  }
 
-  return (
-    <Cart
-      items={items}
-      loadCart={loadCart}
-      removeItem={removeItem}
-    />
-  );
+  useEffect(() => {
+    loadCart();
+
+    window.addEventListener('cartUpdated', loadCart);
+    return () => window.removeEventListener('cartUpdated', loadCart);
+  }, []);
+
+  return <Cart items={items} removeItem={removeItem} />;
 }
 
 export default App;

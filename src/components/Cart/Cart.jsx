@@ -1,24 +1,39 @@
-import CartList from "./CartList";
-import './cart.css'
-const Cart = ({ items, removeItem }) => {
-    const total = items.reduce(
-        (sum, item) => sum + item.price * (item.quantity ?? 1),
-        0
-    );
+import { useEffect } from 'react';
+import './cart.css';
 
+const Cart = ({ items, loadCart, removeItem }) => {
 
-    return (
-        <div className="cart">
-            <h2>Cart</h2>
-            <CartList items={items} removeItem={removeItem} />
-            {items.length > 0 && (
-                <div className="cart__total">
-                    Total: ${total.toFixed(2)}
-                </div>
-            )}
+  useEffect(() => {
+    loadCart();
 
+    window.addEventListener('cartUpdated', loadCart);
+    return () => window.removeEventListener('cartUpdated', loadCart);
+  }, []);
+
+  const total = items.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+
+  return (
+    <div className="cart">
+      {items.length === 0 && <p>Cart is empty</p>}
+
+      {items.map(item => (
+        <div key={item.id} className="cart__card">
+          <h4>{item.title}</h4>
+          <p>${item.price}</p>
+          <button onClick={() => removeItem(item.id)}>Remove</button>
         </div>
-    );
+      ))}
+
+      {items.length > 0 && (
+        <div className="cart__total">
+          Total: ${total.toFixed(2)}
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default Cart;

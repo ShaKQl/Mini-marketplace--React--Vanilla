@@ -1,0 +1,56 @@
+/* -basix- */
+html{
+    font-size: 62.5%
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+ul{
+    list-style: none;
+    color: inherit;
+}
+
+
+/* container */
+.container{
+    max-width: 140em;
+    width: 100%;
+    padding: 0 2em;
+    margin: 0 auto;
+    position: relative;
+}
+
+@media (max-width: 120em) {
+    .container{
+        max-width: 96em;
+    }    
+}
+@media (max-width: 99.2em) {
+    .container{
+        max-width: 72em;
+        padding: 0 1.5em;
+    }    
+}
+
+
+/* @media (max-width: 76.8em) {
+    .container{
+        max-width: 48em;
+        padding: 0 1em;
+    }    
+} */
+
+

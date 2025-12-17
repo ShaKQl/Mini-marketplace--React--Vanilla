@@ -1,0 +1,36 @@
+
+.header{
+    width: 100%;
+    text-align: left;
+    background-color: #6a6868;
+    padding: 2em 0;
+}
+
+
+.header__nav-links{
+    font-size: 2em;
+    
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__nav-links-link:hover{
+    transition: 0.5s ease;
+    
+    color: rgb(255, 255, 255);
+}
+
+
+main{
+    margin: 2em auto;
+}
+
+.page {
+margin-top: 2em;
+  display: none;
+}
+
+.page--active {
+  display: block;
+}

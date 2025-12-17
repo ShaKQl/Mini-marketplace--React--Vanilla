@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Marketplace</title>
+    <link rel="stylesheet" href="./vanillla/styles/card.css">
+    <link rel="stylesheet" href="./vanillla/styles/index.css">
+    <link rel="stylesheet" href="./vanillla/styles/page.css">
+</head>
+
+
+<body>
+
+    <div class="card__notLoaded" styles="display: block">
+        <img src="./loader/261D.png" alt="Loading...">
+    </div>
+    <header class="header">
+        <div class="header__nav container">
+            <div class="header__nav-links">
+                <a href="#products" class="header__nav-links-link">Products</a>
+                <a href="#cart" class="header__nav-links-link">Cart</a>
+            </div>
+        </div>
+    </header>
+
+
+    <section id="products" class="container page page--active">
+        <div class="card"></div>
+    </section>
+
+    <section id="cart" class=" container page">
+        <div id="react-cart-root"></div>
+    </section>
+
+    <script src="./vanillla/scripts.js"></script>
+    <script src="./vanillla/showProducts.js"></script>
+
+
+    <script type="module" src="./src/main.jsx"></script>
+    <!-- React -->
+
+</body>
+
+</html>
